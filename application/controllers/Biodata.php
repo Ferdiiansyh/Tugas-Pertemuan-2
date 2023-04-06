@@ -1,5 +1,4 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Biodata extends CI_Controller {
 
@@ -7,10 +6,12 @@ class Biodata extends CI_Controller {
  {
    $this->load->view('biodata');
  }
- public function penjumlahan($n1, $n2)
+
+ public function penjumlahan($nilai1, $nilai2)
  {
- $this->load->model('Model_aritmatika');
- $hasil = $this->Model_aritmatika->jumlah($n1, $n2);
- echo "Hasil Penjumlahan dari ". $n1 ." + ". $n2 ." = " .$hasil;
+  $data['nilai1'] = $nilai1;
+  $data['nilai2'] = $nilai2;
+  $data['hasil'] = $this->Model_aritmatika->penjumlahan($nilai1, $nilai2);
+  $this->load->view('view-latihan.php', $data);
  }
 }
